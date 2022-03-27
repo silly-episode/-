@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>四则运算练习</title>
+    <link rel="stylesheet"  th:href="@{/css/Home.css}" />
+    <link rel="stylesheet"  th:href="@{/css/common.css}" />
+    <script  th:src="@{/js/Home.js}"></script>
+</head>
+
+<body>
+
+<!-- 语种选择 -->
+<select class="select" name="language" id="language" onchange="on()">
+    <option value="zh">中文简体</option>
+    <option value="tc">中文繁體</option>
+    <option value="en">English</option>
+    </select>
+
+
+<!-- 标题模块 -->
+<div class="title">
+    <img th:src="@{/images/730-102.png}" alt="">
+</div>
+
+
+<!-- 菜单模块 -->
+<div>
+    <form method="get" th:action="@{/selectModel1}">
+        <button class="model1" id="model1" >
+            简&nbsp;&nbsp;&nbsp;单&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式
+        </button>
+    </form>
+
+
+    <form method="get" th:action="@{/selectModel2}">
+        <button class="model2" id="model2"  >
+            中&nbsp;&nbsp;&nbsp;等&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式
+        </button>
+    </form>
+
+    <form method="get" th:action="@{/selectModel3}">
+        <button class="model3" id="model3" >
+            困&nbsp;&nbsp;&nbsp;难&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式
+        </button>
+    </form>
+
+
+    <form method="get" th:action="@{/summary}" >
+        <button class="model4" id="model4">
+            成&nbsp;&nbsp;&nbsp;绩&nbsp;&nbsp;&nbsp;分&nbsp;&nbsp;&nbsp;析
+        </button>
+    </form>
+
+    <form method="get" th:action="@{/logout}" >
+        <button class="model5" id="model5">
+            退&nbsp;&nbsp;&nbsp;出&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;录
+        </button>
+    </form>
+
+</div>
+<script type="text/javascript ">
+    function on() {
+        var value = document.getElementById("language").value;
+        if (value == 'tc') {
+            document.getElementById("model1").innerHTML = '簡&nbsp;&nbsp;&nbsp;單&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式';
+            document.getElementById("model2").innerHTML = '中&nbsp;&nbsp;&nbsp;等&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式';
+            document.getElementById("model3").innerHTML = '困&nbsp;&nbsp;&nbsp;難&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式';
+            document.getElementById("model4").innerHTML = '成&nbsp;&nbsp;&nbsp;績&nbsp;&nbsp;&nbsp;分&nbsp;&nbsp;&nbsp;析';
+            document.getElementById("model5").innerHTML = '退&nbsp;&nbsp;&nbsp;出&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;錄';
+        } else if (value == 'en') {
+            document.getElementById("model1").innerHTML = 'Easy Mode';
+            document.getElementById("model2").innerHTML = 'Medium Mode';
+            document.getElementById("model3").innerHTML = 'Difficult Mode';
+            document.getElementById("model4").innerHTML = 'Performance analysis';
+            document.getElementById("model5").innerHTML = 'Sign out';
+        } else {
+            document.getElementById("model1").innerHTML = '简&nbsp;&nbsp;&nbsp;单&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式';
+            document.getElementById("model2").innerHTML = '中&nbsp;&nbsp;&nbsp;等&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式';
+            document.getElementById("model3").innerHTML = '困&nbsp;&nbsp;&nbsp;难&nbsp;&nbsp;&nbsp;模&nbsp;&nbsp;&nbsp;式';
+            document.getElementById("model4").innerHTML = '成&nbsp;&nbsp;&nbsp;绩&nbsp;&nbsp;&nbsp;分&nbsp;&nbsp;&nbsp;析';
+            document.getElementById("model5").innerHTML = '退&nbsp;&nbsp;&nbsp;出&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;录';
+        }
+    }
+</script>
+
+</body>
+
+</html>
+
+</body>
+</html>

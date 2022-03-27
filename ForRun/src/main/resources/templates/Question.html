@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>练习页面</title>
+  <link rel="stylesheet" th:href="@{/css/Question.css}">
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <script type="text/javascript" th:src="@{/js/Question.js}"></script>
+  <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+
+</head>
+
+<body>
+
+<select class="select" name="language" style="left: 70px;" id="language" onchange="on()">
+  <option value="zh">中文简体</option>
+  <option value="tc">中文繁體</option>
+  <option value="en">English</option>
+  </select>
+<!-- 头部标题 -->
+<div class="header">
+  &nbsp;<span id="1">第</span>
+  <span th:text="${times}"></span>
+  <span id="2">轮练习</span>
+
+</div>
+<!-- 计时器 -->
+ <div id="container">
+    <div id="time">
+        <span id="hour">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+    </div>
+
+    <button id="btn">暂停</button>
+    <button id="reset">重置</button>
+</div>
+
+
+
+<!-- 答题部分 -->
+<form>
+  <table class="questions">
+    <tr>
+      <td class="issue" th:text="${Bank1.get(0).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(1).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(2).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(3).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(4).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(5).getQuestion()}"></td>
+      <td class="td_aa"><input  onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(6).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(7).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(8).getQuestion()}"></td>
+      <td class="td_aa"><input  onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(9).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(10).getQuestion()}"></td>
+      <td class="td_aa"><input  onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(11).getQuestion()}"></td>
+      <td class="td_aa"><input  onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(12).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(13).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(14).getQuestion()}"></td>
+      <td class="td_aa"><input  onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(15).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(16).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(17).getQuestion()}"></td>
+      <td class="td_aa"><input  onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')" type="text" class="aa"></td>
+    </tr>
+    <tr>
+      <td class="issue" th:text="${Bank1.get(18).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+      <td></td>
+      <td class="issue" th:text="${Bank1.get(19).getQuestion()}"></td>
+      <td class="td_aa"><input onkeyup="this.value=this.value.replace(/[^\d\-\.\/]/g,'')"  type="text" class="aa"></td>
+    </tr>
+
+    <!--    提交和重置-->
+    <tr>
+      <td colspan="2" class="td_btn">
+        <input type="reset" id="re" class="btn" value="&nbsp;重写">
+      </td>
+      <td></td>
+      <td colspan="2" class="td_btn">
+        <input type="button" id="submit" class="btn" value="&nbsp;提交" onclick="getElements()">
+      </td>
+    </tr>
+  </table>
+</form>
+
+<script  th:inline="javascript" >
+
+  function CheckForm() {
+    if (confirm("确认要提交答案吗？") == true)
+      return true;
+    else
+      return false;
+  }
+
+  // 获得答案数据
+  var ins = new Array();//存答案数组
+  function getElements() {
+
+    if(CheckForm()==false){
+      throw SyntaxError;
+    }
+
+    console.log(gets());
+
+
+
+    var data = {
+      "studentBank":[
+        {
+
+          "qid": [[${Bank1.get(0).getQid()}]],
+          "model": [[${Bank1.get(0).getModel()}]],
+          "question":[[${Bank1.get(0).getQuestion}]],
+          "answer":ins[0]
+        },
+        {
+          "qid": [[${Bank1.get(1).getQid()}]],
+          "model": [[${Bank1.get(1).getModel()}]],
+          "question":[[${Bank1.get(1).getQuestion()}]],
+          "answer":ins[1]
+        },
+        {
+          "qid": [[${Bank1.get(2).getQid()}]],
+          "model": [[${Bank1.get(2).getModel()}]],
+          "question":[[${Bank1.get(2).getQuestion}]],
+          "answer":ins[2]
+        },
+        {
+          "qid": [[${Bank1.get(3).getQid()}]],
+          "model": [[${Bank1.get(3).getModel()}]],
+          "question":[[${Bank1.get(3).getQuestion}]],
+          "answer":ins[3]
+        },
+        {
+          "qid": [[${Bank1.get(4).getQid()}]],
+          "model": [[${Bank1.get(4).getModel()}]],
+          "question":[[${Bank1.get(4).getQuestion}]],
+          "answer":ins[5]
+        },
+        {
+          "qid": [[${Bank1.get(6).getQid()}]],
+          "model": [[${Bank1.get(6).getModel()}]],
+          "question":[[${Bank1.get(6).getQuestion}]],
+          "answer":ins[6]
+        },
+        {
+          "qid": [[${Bank1.get(7).getQid()}]],
+          "model": [[${Bank1.get(7).getModel()}]],
+          "question":[[${Bank1.get(7).getQuestion}]],
+          "answer":ins[7]
+        },
+        {
+          "qid": [[${Bank1.get(8).getQid()}]],
+          "model": [[${Bank1.get(8).getModel()}]],
+          "question":[[${Bank1.get(8).getQuestion}]],
+          "answer":ins[8]
+        },
+        {
+          "qid": [[${Bank1.get(9).getQid()}]],
+          "model": [[${Bank1.get(9).getModel()}]],
+          "question":[[${Bank1.get(9).getQuestion}]],
+          "answer":ins[9]
+        },
+        {
+          "qid": [[${Bank1.get(10).getQid()}]],
+          "model": [[${Bank1.get(10).getModel()}]],
+          "question":[[${Bank1.get(10).getQuestion}]],
+          "answer":ins[10]
+        },
+        {
+          "qid": [[${Bank1.get(11).getQid()}]],
+          "model": [[${Bank1.get(11).getModel()}]],
+          "question":[[${Bank1.get(11).getQuestion}]],
+          "answer":ins[11]
+        },
+        {
+          "qid": [[${Bank1.get(12).getQid()}]],
+          "model": [[${Bank1.get(12).getModel()}]],
+          "question":[[${Bank1.get(12).getQuestion}]],
+          "answer":ins[12]
+        },
+        {
+          "qid": [[${Bank1.get(13).getQid()}]],
+          "model": [[${Bank1.get(13).getModel()}]],
+          "question":[[${Bank1.get(13).getQuestion}]],
+          "answer":ins[13]
+        },
+        {
+          "qid": [[${Bank1.get(14).getQid()}]],
+          "model": [[${Bank1.get(14).getModel()}]],
+          "question":[[${Bank1.get(14).getQuestion}]],
+          "answer":ins[14]
+        },
+        {
+          "qid": [[${Bank1.get(15).getQid()}]],
+          "model": [[${Bank1.get(15).getModel()}]],
+          "question":[[${Bank1.get(15).getQuestion}]],
+          "answer":ins[15]
+        },    {
+          "qid": [[${Bank1.get(16).getQid()}]],
+          "model": [[${Bank1.get(16).getModel()}]],
+          "question":[[${Bank1.get(16).getQuestion}]],
+          "answer":ins[16]
+        },    {
+          "qid": [[${Bank1.get(17).getQid()}]],
+          "model": [[${Bank1.get(17).getModel()}]],
+          "question":[[${Bank1.get(17).getQuestion}]],
+          "answer":ins[17]
+        },    {
+          "qid": [[${Bank1.get(18).getQid()}]],
+          "model": [[${Bank1.get(18).getModel()}]],
+          "question":[[${Bank1.get(18).getQuestion}]],
+          "answer":ins[18]
+        },    {
+          "qid": [[${Bank1.get(19).getQid()}]],
+          "model": [[${Bank1.get(19).getModel()}]],
+          "question":[[${Bank1.get(19).getQuestion}]],
+          "answer":ins[19]
+        }
+      ]
+    };
+
+
+    var data1 = {
+      "studentBank":[
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[0]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[1]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[2]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[3]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[4]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[5]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[6]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[7]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[8]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[9]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[10]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[11]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[12]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[13]
+        },        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[14]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[15]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[16]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[17]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[18]
+        },
+        {
+          "qid": 1,
+          "model": 1,
+          "question":"",
+          "answer":ins[19]
+        },
+
+
+      ]
+    };
+    var data2 =new Array();
+    data2.push({qid:"1",model:1,question:"",answer:ins[0]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[1]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[2]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[3]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[4]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[5]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[6]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[7]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[8]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[9]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[10]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[11]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[12]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[13]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[14]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[15]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[16]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[17]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[18]});
+    data2.push({qid:"1",model:1,question:"",answer:ins[19]});
+    $.ajax({
+      url:"/FourRun_war_exploded/submitAnswer",
+      // url:"/submitAnswer",
+      method:'post',
+      // type:"post",
+      data: JSON.stringify(data2),
+      contentType: "application/json",
+      // headers : {"Content-Type" : "application/json;charset=utf-8"},
+      dataType:'json',
+      success:function (data2) {
+        if(data2.code == "1") {
+          window.location.href="http://localhost:8080/FourRun_war_exploded/Answer";
+        }
+        else {
+          alert("提交失败，请稍后再试");
+        }
+      },
+      error:function (data2){
+        alert("出错啦！");
+      }
+    });
+  }
+
+  function gets() {
+    var tags = document.querySelectorAll('.aa');
+    for (var i = 0; i < 20; i++) {
+      ins[i] = tags[i].value;
+    }
+    return ins;
+  }
+
+
+    function on() {
+    var value = document.getElementById("language").value;
+    if (value == 'tc') {
+    document.getElementById("1").innerHTML = '第';
+    document.getElementById("2").innerHTML = '輪練習';
+    document.getElementById("re").innerHTML = '重寫';
+    document.getElementById("submit").innerHTML = '提交';
+    document.getElementById("reset").innerHTML = '重置';
+    document.getElementById("btn").innerHTML = '暫停';
+  } else if (value == 'en') {
+    document.getElementById("1").innerHTML = 'Round';
+    document.getElementById("2").innerHTML = 'exercise';
+    document.getElementById("re").innerHTML = 'Rewrite';
+    document.getElementById("submit").innerHTML = 'Submit';
+      document.getElementById("reset").innerHTML = 'Reset';
+      document.getElementById("btn").innerHTML = 'Suspend';
+  } else {
+    document.getElementById("1").innerHTML = '第';
+    document.getElementById("2").innerHTML = '轮练习';
+    document.getElementById("re").innerHTML = '重写';
+    document.getElementById("submit").innerHTML = '提交';
+    document.getElementById("reset").innerHTML = '重置';
+    document.getElementById("btn").innerHTML = '暂停';
+  }
+
+  }
+
+
+
+</script>
+
+
+</body>
+
+</html>

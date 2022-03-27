@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/Answer.css}">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <title>答卷</title>
+    <!--    字体引用-->
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?gwt90g');
+            src: url('fonts/icomoon.eot?gwt90g#iefix') format('embedded-opentype'),
+            url('fonts/icomoon.ttf?gwt90g') format('truetype'),
+            url('fonts/icomoon.woff?gwt90g') format('woff'),
+            url('fonts/icomoon.svg?gwt90g#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+</head>
+
+<body>
+<select class="select" name="language" id="language" onchange="on()">
+    <option value="zh">中文简体</option>
+    <option value="tc">中文繁體</option>
+    <option value="en">English</option>
+</select>
+
+
+    <!-- 头部标题 -->
+<div class="header" id="header" style="letter-spacing:0">
+    <span id="1">第</span>
+    <span th:text="${session.times}"></span>
+    <span id="2">轮答卷</span>
+</div>
+<!-- 分数部分 -->
+<div class="defen">
+    <span id="score">本次得分:</span>
+    <span class="score" th:text="${session.score}"></span>
+</div>
+
+<!-- 答卷内容 -->
+
+<table class="sheet">
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(0).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(0).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j0"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(0).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(1).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(1).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j1"></span></td>
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(1).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(2).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(2).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j2"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(2).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(3).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(3).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j3"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(3).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(4).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(4).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j4"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(4).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(5).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(5).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j5"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(5).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(6).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(6).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j6"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(6).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(7).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(7).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j7"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(7).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(8).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(8).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j8"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(8).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(9).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(9).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j9"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(9).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(10).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(10).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j10"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(10).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(11).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(11).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j11"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(11).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(12).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(12).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j12"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(12).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(13).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(13).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j13"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(13).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(14).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(14).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j14"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(14).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(15).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(15).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j15"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(15).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(16).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(16).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j16"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(16).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(17).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(17).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j17"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(17).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(18).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(18).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j18"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(18).getAnswer()}"></td>
+    </tr>
+    <tr>
+        <td class="td_issue" th:text="${session.rightBank.get(19).getQuestion()}"></td>
+        <td class="word">我的答案:</td>
+        <td class="aa" th:text="${session.studentBank.get(19).getAnswer()}"></td>
+        <td class="td_judge"><span class="result" id="j19"></span></td>
+
+        <td class="r_word">正确答案:</td>
+        <td class="r_aa" th:text="${session.rightBank.get(19).getAnswer()}"></td>
+    </tr>
+</table>
+
+<!--///////////////////////////////////////////////////////////////////////////////-->
+<div class="jump">
+
+    <form method="get" th:action="@{/exit}">
+        <button class="btn_1" id="out" >&nbsp;退出</button>
+    </form>
+    <form method="get"  th:action="@{/redo}">
+        <button class="btn_2" id="again">&nbsp;再来一轮</button>
+    </form>
+
+
+</div>
+
+
+<script type="text/javascript">
+    //获取后台传过来的判断结果
+    if ([[${session.situation.get(0)}]]== 1) {
+        document.getElementById("j0").innerHTML = '√';
+        // document.getElementById("j0").style.color = '#00b89d';
+    } else {
+        document.getElementById("j0").innerHTML = '×';
+        document.getElementById("j0").style.color = '#f33f34';
+    }
+    // var j1 = ;
+    if ([[${session.situation.get(1)}]]== 1) {
+        document.getElementById("j1").innerHTML = '√';
+        }
+    else{
+        document.getElementById("j1").innerHTML = '×';
+        document.getElementById("j1").style.color = '#f33f34';
+    }
+    if ([[${session.situation.get(2)}]]== 1) {
+        document.getElementById("j2").innerHTML = '√';
+    } else {
+        document.getElementById("j2").innerHTML = '×';
+        document.getElementById("j2").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(3)}]]== 1) {
+        document.getElementById("j3").innerHTML = '√';
+    } else {
+        document.getElementById("j3").innerHTML = '×';
+        document.getElementById("j3").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(4)}]]== 1) {
+        document.getElementById("j4").innerHTML = '√';
+    } else {
+        document.getElementById("j4").innerHTML = '×';
+        document.getElementById("j4").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(5)}]]== 1) {
+        document.getElementById("j5").innerHTML = '√';
+    } else {
+        document.getElementById("j5").innerHTML = '×';
+        document.getElementById("j5").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(6)}]]== 1) {
+        document.getElementById("j6").innerHTML = '√';
+    } else {
+        document.getElementById("j6").innerHTML = '×';
+        document.getElementById("j6").style.color = '#f33f34';
+    }
+    if ([[${session.situation.get(7)}]]== 1) {
+        document.getElementById("j7").innerHTML = '√';
+    } else {
+        document.getElementById("j7").innerHTML = '×';
+        document.getElementById("j7").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(8)}]]== 1) {
+        document.getElementById("j8").innerHTML = '√';
+    } else {
+        document.getElementById("j8").innerHTML = '×';
+        document.getElementById("j8").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(9)}]]== 1) {
+        document.getElementById("j9").innerHTML = '√';
+    } else {
+        document.getElementById("j9").innerHTML = '×';
+        document.getElementById("j9").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(10)}]]== 1) {
+        document.getElementById("j10").innerHTML = '√';
+    } else {
+        document.getElementById("j10").innerHTML = '×';
+        document.getElementById("j10").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(11)}]]== 1) {
+        document.getElementById("j1").innerHTML = '√';
+    } else {
+        document.getElementById("j11").innerHTML = '×';
+        document.getElementById("j11").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(12)}]]== 1) {
+        document.getElementById("j12").innerHTML = '√';
+    } else {
+        document.getElementById("j12").innerHTML = '×';
+        document.getElementById("j12").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(13)}]]== 1) {
+        document.getElementById("j1").innerHTML = '√';
+    } else {
+        document.getElementById("j13").innerHTML = '×';
+        document.getElementById("j13").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(14)}]]== 1) {
+        document.getElementById("j14").innerHTML = '√';
+    } else {
+        document.getElementById("j14").innerHTML = '×';
+        document.getElementById("j14").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(15)}]]== 1) {
+        document.getElementById("j15").innerHTML = '√';
+    } else {
+        document.getElementById("j15").innerHTML = '×';
+        document.getElementById("j15").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(16)}]]== 1) {
+        document.getElementById("j16").innerHTML = '√';
+    } else {
+        document.getElementById("j16").innerHTML = '×';
+        document.getElementById("j16").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(17)}]]== 1) {
+        document.getElementById("j17").innerHTML = '√';
+    } else {
+        document.getElementById("j17").innerHTML = '×';
+        document.getElementById("j17").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(18)}]]== 1) {
+        document.getElementById("j18").innerHTML = '√';
+    } else {
+        document.getElementById("j18").innerHTML = '×';
+        document.getElementById("j18").style.color = '#f33f34';
+    }
+
+    if ([[${session.situation.get(19)}]]== 1) {
+        document.getElementById("j19").innerHTML = '√';
+    } else {
+        document.getElementById("j19").innerHTML = '×';
+        document.getElementById("j19").style.color = '#f33f34';
+    }
+
+    function on() {
+        var value = document.getElementById("language").value;
+        if (value == 'tc') {
+            document.getElementById("1").innerHTML = '第';
+            document.getElementById("2").innerHTML = '輪答卷';
+            var a = document.querySelectorAll(".word");
+            for (var i = 0; i < 20; i++) {
+                a[i].innerHTML = '我的答案:';
+            }
+            var a = document.querySelectorAll(".r_word");
+            for (var i = 0; i < 20; i++) {
+                a[i].innerHTML = '正确答案:';
+            }
+            document.getElementById("score").innerHTML = '本次得分:';
+            document.getElementById("out").innerHTML = '&nbsp;退出';
+            document.getElementById("again").innerHTML = '&nbsp;再來一次';
+        } else if (value == 'en') {
+            document.getElementById("1").innerHTML = 'Round';
+            document.getElementById("2").innerHTML = 'answer';
+            var a = document.querySelectorAll(".word");
+            for (var i = 0; i < 20; i++) {
+                a[i].innerHTML = 'My answer:';
+            }
+            var a = document.querySelectorAll(".r_word");
+            for (var i = 0; i < 20; i++) {
+                a[i].innerHTML = 'Right answer:';
+            }
+            document.getElementById("score").innerHTML = 'This score:';
+            document.getElementById("out").innerHTML = '&nbsp;Return';
+            document.getElementById("again").innerHTML = '&nbsp;Again';
+        } else {
+            document.getElementById("1").innerHTML = '第';
+            document.getElementById("2").innerHTML = '轮答卷';
+            var a = document.querySelectorAll(".word");
+            for (var i = 0; i < 20; i++) {
+                a[i].innerHTML = '我的答案:';
+            }
+            var a = document.querySelectorAll(".r_word");
+            for (var i = 0; i < 20; i++) {
+                a[i].innerHTML = '正确答案:';
+            }
+            document.getElementById("score").innerHTML = '本次得分:';
+            document.getElementById("out").innerHTML = '&nbsp;退出';
+            document.getElementById("again").innerHTML = '&nbsp;再来一次';
+        }
+    }
+</script>
+
+
+</body>
+
+</html>

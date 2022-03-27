@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/summary.css}">
+    <script th:src="@{/js/echarts.min.js}"></script>
+    <title>成绩分析页面</title>
+</head>
+
+<body>
+<select class="select" name="language" id="language" onchange="on()">
+    <option value="zh">中文简体</option>
+    <option value="tc">中文繁體</option>
+    <option value="en">English</option>
+    </select>
+
+
+    <div class="header" id="header">
+    &nbsp;&nbsp;近十次成绩折线图
+</div>
+<!-- 1.准备一个具备大小的 DOM 容器 -->
+<div class="box" id="line"></div>
+
+<button id="btn" class="btn" type="submit"onclick="window.history.go(-1)">
+    &nbsp;&nbsp;返&nbsp;&nbsp;回&nbsp;&nbsp;主&nbsp;&nbsp;页&nbsp;&nbsp;面
+</button>
+
+<!--th:inline="none"-->
+<!---->
+<script th:inline="javascript">
+    // 2.初始化echarts实例化对象
+    var myChart = echarts.init(document.getElementById('line'));
+    // 3.指定图表的配置项和数据
+    var xDataArr = new Array();                          //文字
+    var yDataArr = new Array();                         //grade
+    var size =[[${size}]];
+    var times=[[${times}]];
+    var result=[[${result}]];
+    var j=size-1;
+    var i=9;
+    while(i>=0) {
+        if(size<10&&j>=0) {
+            xDataArr.push("第"+times[j]+"轮");
+            yDataArr.push(result[j]);
+            j--;
+        }
+        else if(size>=10) {
+            xDataArr.push("第"+times[i]+"轮");
+            yDataArr.push(result[i]);
+        }
+        i--;
+    }
+
+
+
+
+    var option = {
+        xAxis: {
+            type: 'category',
+            data: xDataArr
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            name: '康师傅',
+            data: yDataArr,
+            type: 'line',
+            markPoint: {
+                data: [{
+                    type: 'max',
+                    name: '最大值'
+                }, {
+                    type: 'min',
+                    name: '最小值'
+                }]
+            },
+            markLine: {
+                data: [{
+                    type: 'average',
+                    name: '平均值'
+                }]
+            }
+        }]
+    };
+
+    // 4.使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+    function on() {
+        var value = document.getElementById("language").value;
+        if (value == 'tc') {
+            document.getElementById("header").innerHTML = '&nbsp;近十次成績折線圖';
+            document.getElementById("btn").innerHTML = '&nbsp;&nbsp;返&nbsp;&nbsp;回&nbsp;&nbsp;主&nbsp;&nbsp;頁&nbsp;&nbsp;面';
+        } else if (value == 'en') {
+            document.getElementById("header").innerHTML = 'Score line chart';
+            document.getElementById("btn").innerHTML = 'Return to index';
+        } else {
+            document.getElementById("header").innerHTML = '&nbsp;近十次成绩折线图';
+            document.getElementById("btn").innerHTML = '&nbsp;&nbsp;返&nbsp;&nbsp;回&nbsp;&nbsp;主&nbsp;&nbsp;页&nbsp;&nbsp;面';
+        }
+    }
+</script>
+</body>
+
+
+</html>
+
