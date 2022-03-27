@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    outline: none
+    /*或:outline: 0 */
+}
+
+
+/* 试卷与答卷的公共样式 */
+
+.header {
+    height: 120px;
+    width: 500px;
+    margin: 5px auto;
+    /* background-color: pink; */
+    color: #113f3d;
+    font-size: 50px;
+    line-height: 120px;
+    text-align: center;
+    /*letter-spacing: 15px;*/
+}
+.select {
+    position: fixed;
+    top: 30px;
+    right: 70px;
+    width: 80px;
+    height: 20px;
+    outline: none;
+}
