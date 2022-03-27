@@ -1,0 +1,91 @@
+body {
+    background: url(../images/试卷背景.jpg) no-repeat center;
+    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+    background-attachment: fixed;
+    /* 让背景图基于容器大小伸缩 */
+    background-size: cover;
+}
+
+
+.questions {
+    margin: 5px auto;
+    margin-bottom: 50px;
+    padding: 10px 25px;
+    /* width: 850px; */
+    width: 900px;
+    /* height: 820px; */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.questions tr td {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: #113f3d;
+    letter-spacing: 7px
+}
+
+.issue {
+    width: 300px;
+    height: 75px;
+}
+
+.td_aa {
+    height: 75px;
+    width: 50px;
+    line-height: 20px;
+}
+
+.aa {
+    width: 50px;
+    height: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.td_btn {
+    height: 75px;
+}
+
+.btn {
+    width: 140px;
+    height: 32px;
+    line-height: 23px;
+    border: #83af9b;
+    border-radius: 15px;
+    font-size: 20px;
+    text-align: center;
+    color: #113f3d;
+    background-color: #83af9b;
+    font-weight: 600;
+    letter-spacing: 10px
+}
+
+#container {
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    height: 200px;
+    width: 150px;
+    /* margin: 100px auto; */
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+#container button {
+    display: block;
+    background: #83af9b;
+    border: none;
+    border-radius: 20px;
+    margin: 20px auto;
+    padding: 5px 30px;
+    color: #113f3d;
+    font-size: 20px;
+    outline: none;
+}
+
+#container #time {
+    font-size: 22px;
+    margin: 25px auto;
+    text-align: center;
+}
